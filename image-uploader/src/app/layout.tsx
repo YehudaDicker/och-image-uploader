@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -14,15 +13,38 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "OmniChannel Health Image Uploader",
-  description: "OmniChannel Health Image Uploader",
+  description: "Easily upload and send screenshots.",
   icons: [
-    { rel: "icon", url: "/favicon.ico", sizes: "32x32" }, // Default favicon
-    { rel: "icon", url: "/favicon-16x16.png", sizes: "16x16" }, // Small favicon
-    { rel: "icon", url: "/favicon-32x32.png", sizes: "32x32" }, // Standard favicon
-    { rel: "icon", url: "/android-chrome-192x192.png", sizes: "192x192" }, // Used by Android/Chrome
-    { rel: "icon", url: "/android-chrome-512x512.png", sizes: "512x512" }, // High-res
-    { rel: "apple-touch-icon", url: "/apple-touch-icon.png", sizes: "180x180" }, // iOS/macOS
+    { rel: "icon", url: "/favicon.ico", sizes: "32x32" },
+    { rel: "apple-touch-icon", url: "/apple-touch-icon.png", sizes: "180x180" },
   ],
+  openGraph: {
+    title: "OmniChannel Health Image Uploader",
+    description: "Easily upload and send screenshots.",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://default-url.com",
+    siteName: "OmniChannel Health",
+    images: [
+      {
+        url: `${
+          process.env.NEXT_PUBLIC_SITE_URL || "https://default-url.com"
+        }/ochLogoBackgroundRemoved.png`,
+        width: 1200,
+        height: 630,
+        alt: "OmniChannel Health Logo",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OmniChannel Health Image Uploader",
+    description: "Easily upload and send screenshots.",
+    images: [
+      `${
+        process.env.NEXT_PUBLIC_SITE_URL || "https://default-url.com"
+      }/ochLogoBackgroundRemoved.png`,
+    ],
+  },
 };
 
 export default function RootLayout({

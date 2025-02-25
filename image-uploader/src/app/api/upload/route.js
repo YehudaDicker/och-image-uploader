@@ -7,7 +7,8 @@ export async function POST(req) {
 
     const formData = await req.formData();
     const file = formData.get("file");
-    const userEmail = formData.get("email"); // Get user’s email
+    const userEmail = formData.get("email");
+    const userMessage = formData.get("message"); // Get user message
 
     if (!file || !userEmail) {
       console.error("❌ Missing file or email!");
@@ -19,12 +20,12 @@ export async function POST(req) {
 
     console.log("📧 Email provided:", userEmail);
     console.log("📁 File received:", file.name);
+    console.log("💬 Message:", userMessage || "No message provided"); // Log message
 
     // Convert file to Buffer
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Nodemailer setup
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
@@ -38,10 +39,10 @@ export async function POST(req) {
     console.log("📧 Sending email...");
 
     await transporter.sendMail({
-      from: `"${userEmail}" <${process.env.EMAIL_USER}>`, // Show user's email in "From" field
+      from: `"${userEmail}" <${process.env.EMAIL_USER}>`,
       to: "dickeryehuda@gmail.com",
       subject: "📷 New Screenshot Uploaded",
-      text: `This image was uploaded by ${userEmail}`,
+      text: `Message:\n${userMessage || "No message provided"}`,
       attachments: [
         {
           filename: file.name,
