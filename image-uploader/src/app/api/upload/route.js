@@ -40,9 +40,9 @@ export async function POST(req) {
 
     await transporter.sendMail({
       from: `"${userEmail}" <${process.env.EMAIL_USER}>`,
-      to: "dickeryehuda@gmail.com",
+      to: "jonathan@hcrimson.com",
       subject: "📷 New Screenshot Uploaded",
-      text: `Message:\n${userMessage || "No message provided"}`,
+      text: `${userMessage || "No message provided"}`,
       attachments: [
         {
           filename: file.name,

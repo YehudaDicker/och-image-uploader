@@ -133,7 +133,7 @@ export default function Home() {
             height={50}
             className="mr-3"
           />
-          <h1 className="text-2xl">Upload Screenshot</h1>
+          <h1 className="text-2xl font-bold">Upload Screenshot</h1>
         </div>
 
         <form onSubmit={handleUpload} className="flex flex-col items-center">
