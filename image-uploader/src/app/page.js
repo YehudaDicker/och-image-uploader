@@ -40,7 +40,7 @@ export default function Home() {
       setPreview(null);
     }
 
-    // **🚀 CLOSE THE WEBCAM IF A FILE IS SELECTED**
+    // **CLOSE THE WEBCAM IF A FILE IS SELECTED**
     if (isCameraOpen) {
       closeCamera();
     }
@@ -76,7 +76,7 @@ export default function Home() {
       setPreview(null);
       setEmailError("");
     } catch (error) {
-      console.error("❌ Error uploading file:", error);
+      console.error("Error uploading file:", error);
       alert("Failed to upload file.");
     } finally {
       setLoading(false);
@@ -94,7 +94,7 @@ export default function Home() {
         });
         if (videoRef.current) videoRef.current.srcObject = stream;
       } catch (error) {
-        console.error("❌ Camera access denied:", error);
+        console.error("Camera access denied:", error);
         alert("Could not access the camera.");
       }
     }
